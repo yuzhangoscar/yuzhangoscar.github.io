@@ -1,13 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootcamp</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Doe | Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(180deg, #f5f7fa, #c3cfe2);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    main {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .project-button {
+      background-color: #4a90e2;
+      color: white;
+      font-size: 1.3rem;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      width: 250px;
+      text-align: center;
+    }
+
+    .project-button:hover {
+      background-color: #357ab8;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 30px 0;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-    <body>
-        <h1>Standalone Assessment Example</h1>
-        <div id="learnosity_assess"></div>
-        <script src="https://items.learnosity.com/?v2022.1.LTS"></script>
-    </body>
+<body>
+
+  <header>
+    <h1>Yu Zhang</h1>
+    <p>Hi, I'm a software tester based in Sydney. I enjoy building projects that combine clean design and smart functionality.</p>
+  </header>
+
+  <main>
+    <a href="https://github.com/yourusername/project1" class="project-button">🧠 Habit Tracker App</a>
+    <a href="https://github.com/yourusername/project2" class="project-button">📊 Rubric Builder</a>
+    <a href="https://github.com/yourusername/project3" class="project-button">⚙️ API Demo</a>
+  </main>
+
+  <footer>
+    <p>📧 Email: <a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
+    <p>🌐 GitHub: <a href="https://github.com/yourusername" target="_blank">@yourusername</a></p>
+    <p>© 2025 John Doe</p>
+  </footer>
+
+</body>
 </html>
