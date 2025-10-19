@@ -3,212 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>John Doe | Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: linear-gradient(180deg, #f5f7fa, #c3cfe2);
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    header {
-      text-align: center;
-      margin-top: 80px;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.4rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #555;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    main {
-      margin-top: 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .project-button {
-      background-color: #4a90e2;
-      color: white;
-      font-size: 1.3rem;
-      padding: 16px 40px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-      width: 250px;
-      text-align: center;
-    }
-
-    .project-button:hover {
-      background-color: #357ab8;
-      transform: translateY(-3px);
-    }
-
-    footer {
-      margin-top: auto;
-      text-align: center;
-      padding: 30px 0;
-      color: #444;
-      font-size: 0.95rem;
-    }
-
-    footer a {
-      color: #4a90e2;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Chatting Octopus Popup Styles */
-    .octopus-popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px;
-      height: 300px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      display: none;
-      overflow: hidden;
-      resize: both;
-      min-width: 300px;
-      min-height: 200px;
-    }
-
-    .octopus-popup.minimized {
-      height: 40px;
-      resize: none;
-    }
-
-    .octopus-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 10px 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: move;
-      user-select: none;
-    }
-
-    .octopus-title {
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .octopus-controls {
-      display: flex;
-      gap: 5px;
-    }
-
-    .octopus-btn {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-      transition: opacity 0.2s;
-    }
-
-    .octopus-btn:hover {
-      opacity: 0.8;
-    }
-
-    .minimize-btn {
-      background: #ffc107;
-      color: #333;
-    }
-
-    .maximize-btn {
-      background: #28a745;
-      color: white;
-    }
-
-    .close-btn {
-      background: #dc3545;
-      color: white;
-    }
-
-    .octopus-content {
-      padding: 20px;
-      height: calc(100% - 60px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-style: italic;
-    }
-
-    .octopus-popup.minimized .octopus-content {
-      display: none;
-    }
-
-    .octopus-trigger {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      z-index: 999;
-    }
-
-    .octopus-trigger:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-    }
-  </style>
+  <title>Yu Zhang | Portfolio</title>
+  <!-- Three.js for 3D rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
-    <h1>Yu Zhang</h1>
-    <p>Hi, I'm a software tester based in Sydney. I enjoy building projects that combine clean design and smart functionality.</p>
-  </header>
+  <!-- 3D Background Canvas -->
+  <canvas id="three-canvas"></canvas>
 
-  <main>
-    <a href="https://github.com/yuzhangoscar/syslogParser" class="project-button">🧠 Syslog Parser</a>
-    <a href="https://github.com/yuzhangoscar/pomodoroTimer" class="project-button">🍅 Pomodoro Timer</a>
-    <a href="https://github.com/yuzhangoscar/retirementAssetCalculator" class="project-button">💲 Retirement Asset Calculator</a>
-  </main>
+  <!-- Main Content -->
+  <div class="main-content visible" id="mainContent">
+    <header>
+      <h1>Yu Zhang</h1>
+      <p>Hi, I'm a software tester based in Sydney. I enjoy building projects that combine clean design and smart functionality.</p>
+    </header>
 
-  <footer>
-    <p>📧 LinkedIn: <a href="https://www.linkedin.com/in/yu-zhang-8b366337/">Yu Zhang</a></p>
-    <p>🌐 GitHub: <a href="https://github.com/yuzhangoscar" target="_blank">@yuzhangoscar</a></p>
-    <p>© 2025 Yu Zhang</p>
-  </footer>
+    <main>
+      <a href="https://github.com/yuzhangoscar/syslogParser" class="project-button">🧠 Syslog Parser</a>
+      <a href="https://github.com/yuzhangoscar/pomodoroTimer" class="project-button">🍅 Pomodoro Timer</a>
+      <a href="https://github.com/yuzhangoscar/retirementAssetCalculator" class="project-button">💲 Retirement Asset Calculator</a>
+    </main>
+
+    <footer>
+      <p>📧 LinkedIn: <a href="https://www.linkedin.com/in/yu-zhang-8b366337/">Yu Zhang</a></p>
+      <p>🌐 GitHub: <a href="https://github.com/yuzhangoscar" target="_blank">@yuzhangoscar</a></p>
+      <p>© 2025 Yu Zhang</p>
+    </footer>
+  </div>
 
   <!-- Chatting Octopus Popup -->
   <div class="octopus-popup" id="octopusPopup">
@@ -232,106 +56,8 @@
     🐙
   </button>
 
-  <script>
-    // Chatting Octopus Popup Functionality
-    const popup = document.getElementById('octopusPopup');
-    const trigger = document.getElementById('octopusTrigger');
-    const closeBtn = document.getElementById('closeBtn');
-    const minimizeBtn = document.getElementById('minimizeBtn');
-    const maximizeBtn = document.getElementById('maximizeBtn');
-    const header = document.getElementById('octopusHeader');
-
-    let isMaximized = false;
-    let isMinimized = false;
-    let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
-    let xOffset = 0;
-    let yOffset = 0;
-
-    // Show popup
-    trigger.addEventListener('click', () => {
-      popup.style.display = 'block';
-      trigger.style.display = 'none';
-    });
-
-    // Close popup
-    closeBtn.addEventListener('click', () => {
-      popup.style.display = 'none';
-      trigger.style.display = 'block';
-      isMaximized = false;
-      isMinimized = false;
-      popup.classList.remove('minimized');
-      resetPopupSize();
-    });
-
-    // Minimize popup
-    minimizeBtn.addEventListener('click', () => {
-      isMinimized = !isMinimized;
-      popup.classList.toggle('minimized');
-    });
-
-    // Maximize popup
-    maximizeBtn.addEventListener('click', () => {
-      isMaximized = !isMaximized;
-      if (isMaximized) {
-        popup.style.width = '80vw';
-        popup.style.height = '80vh';
-        popup.style.top = '10vh';
-        popup.style.left = '10vw';
-        popup.style.transform = 'none';
-      } else {
-        resetPopupSize();
-      }
-    });
-
-    function resetPopupSize() {
-      popup.style.width = '400px';
-      popup.style.height = '300px';
-      popup.style.top = '50%';
-      popup.style.left = '50%';
-      popup.style.transform = 'translate(-50%, -50%)';
-    }
-
-    // Drag functionality
-    header.addEventListener('mousedown', dragStart);
-    document.addEventListener('mousemove', dragMove);
-    document.addEventListener('mouseup', dragEnd);
-
-    function dragStart(e) {
-      if (isMaximized) return;
-      
-      initialX = e.clientX - xOffset;
-      initialY = e.clientY - yOffset;
-
-      if (e.target === header || header.contains(e.target)) {
-        isDragging = true;
-      }
-    }
-
-    function dragMove(e) {
-      if (isDragging) {
-        e.preventDefault();
-        currentX = e.clientX - initialX;
-        currentY = e.clientY - initialY;
-
-        xOffset = currentX;
-        yOffset = currentY;
-
-        popup.style.transform = `translate(${currentX}px, ${currentY}px)`;
-        popup.style.top = '50%';
-        popup.style.left = '50%';
-      }
-    }
-
-    function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
-      isDragging = false;
-    }
-  </script>
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
 
 </body>
 </html>

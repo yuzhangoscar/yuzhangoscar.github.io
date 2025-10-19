@@ -1,0 +1,231 @@
+/* Yu Zhang's Portfolio Website Styles */
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Fallback background in case 3D doesn't load */
+  background: linear-gradient(180deg, #f5f7fa, #c3cfe2);
+}
+
+/* 3D Background Canvas */
+#three-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Content overlay with transparency */
+.content-overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  text-align: center;
+  margin-top: 80px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.4rem;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+main {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.project-button {
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1.3rem;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  width: 250px;
+  text-align: center;
+}
+
+.project-button:hover {
+  background-color: #357ab8;
+  transform: translateY(-3px);
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 30px 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Chatting Octopus Popup Styles */
+.octopus-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: none;
+  overflow: hidden;
+  resize: both;
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.octopus-popup.minimized {
+  height: 40px;
+  resize: none;
+}
+
+.octopus-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  user-select: none;
+}
+
+.octopus-title {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.octopus-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.octopus-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.octopus-btn:hover {
+  opacity: 0.8;
+}
+
+.minimize-btn {
+  background: #ffc107;
+  color: #333;
+}
+
+.maximize-btn {
+  background: #28a745;
+  color: white;
+}
+
+.close-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.octopus-content {
+  padding: 20px;
+  height: calc(100% - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-style: italic;
+}
+
+.octopus-popup.minimized .octopus-content {
+  display: none;
+}
+
+.octopus-trigger {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 999;
+}
+
+.octopus-trigger:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* Main content styles */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Enhanced glassmorphism for main sections */
+header, main, footer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  margin: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
