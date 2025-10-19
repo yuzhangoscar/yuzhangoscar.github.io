@@ -60,6 +60,15 @@ main {
   gap: 25px;
 }
 
+/* Project row styling for side-by-side buttons */
+.project-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .project-button {
   background-color: #4a90e2;
   color: white;
@@ -70,13 +79,38 @@ main {
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.2s ease, background-color 0.2s ease;
-  width: 250px;
+  width: 280px;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-button:hover {
   background-color: #357ab8;
   transform: translateY(-3px);
+}
+
+/* Demo button styling - distinct from GitHub repo buttons */
+.demo-button {
+  background: linear-gradient(135deg, #28a745, #20c997) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-button:hover {
+  background: linear-gradient(135deg, #218838, #1ea88a) !important;
+  transform: translateY(-3px);
+}
+
+.demo-button::before {
+  content: "🚀";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  opacity: 0.8;
 }
 
 footer {
@@ -228,4 +262,17 @@ header, main, footer {
   margin: 20px;
   padding: 30px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design for project buttons */
+@media (max-width: 768px) {
+  .project-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .project-button {
+    width: 250px;
+    font-size: 1.1rem;
+  }
 }
