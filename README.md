@@ -16,6 +16,8 @@ This is a clean, minimal portfolio website showcasing Yu Zhang's work as a softw
 ## Current Projects Featured
 
 - **🧠 Syslog Parser**: A tool for parsing and analyzing system log files ([GitHub Repository](https://github.com/yuzhangoscar/syslogParser))
+- **🧠 Retirement asset calculator**: A calculator to plan for your retirement ([GitHub Repository](https://github.com/yuzhangoscar/retirementAssetCalculator))
+- **🧠 Pomodoro Timer**: A timer help you focus and relax ([GitHub Repository](https://github.com/yuzhangoscar/pomodoroTimer))
 
 ## Technology Stack
 
