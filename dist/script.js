@@ -60,7 +60,7 @@ function createParticles() {
     const material = new THREE.MeshBasicMaterial({
       color: new THREE.Color().setHSL(Math.random(), 0.7, 0.6),
       transparent: true,
-      opacity: 0.6
+      opacity: 0.9
     });
     
     const particle = new THREE.Mesh(particleGeometry, material);
@@ -88,7 +88,7 @@ function createBackgroundGeometry() {
   const planeMaterial = new THREE.MeshBasicMaterial({
     color: 0x4a90e2,
     transparent: true,
-    opacity: 0.08,
+    opacity: 0.25,
     wireframe: true
   });
   
@@ -155,21 +155,21 @@ function createBackgroundGeometry() {
         color: new THREE.Color().setHSL(Math.random(), 0.8, 0.6),
         wireframe: true,
         transparent: true,
-        opacity: 0.4
+        opacity: 0.8
       });
     } else if (materialType < 0.6) {
       // Solid with transparency
       material = new THREE.MeshBasicMaterial({
         color: new THREE.Color().setHSL(Math.random(), 0.7, 0.7),
         transparent: true,
-        opacity: 0.25
+        opacity: 0.7
       });
     } else {
       // Glowing effect
       material = new THREE.MeshBasicMaterial({
         color: new THREE.Color().setHSL(Math.random(), 0.9, 0.8),
         transparent: true,
-        opacity: 0.35
+        opacity: 0.75
       });
     }
     
@@ -211,7 +211,7 @@ function createBackgroundGeometry() {
       color: new THREE.Color().setHSL(0.6 + Math.random() * 0.3, 0.8, 0.7),
       wireframe: true,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.95
     });
     
     const centralShape = new THREE.Mesh(centralGeometry, centralMaterial);
