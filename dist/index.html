@@ -76,6 +76,119 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Chatting Octopus Popup Styles */
+    .octopus-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 300px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: none;
+      overflow: hidden;
+      resize: both;
+      min-width: 300px;
+      min-height: 200px;
+    }
+
+    .octopus-popup.minimized {
+      height: 40px;
+      resize: none;
+    }
+
+    .octopus-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: move;
+      user-select: none;
+    }
+
+    .octopus-title {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .octopus-controls {
+      display: flex;
+      gap: 5px;
+    }
+
+    .octopus-btn {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+
+    .octopus-btn:hover {
+      opacity: 0.8;
+    }
+
+    .minimize-btn {
+      background: #ffc107;
+      color: #333;
+    }
+
+    .maximize-btn {
+      background: #28a745;
+      color: white;
+    }
+
+    .close-btn {
+      background: #dc3545;
+      color: white;
+    }
+
+    .octopus-content {
+      padding: 20px;
+      height: calc(100% - 60px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-style: italic;
+    }
+
+    .octopus-popup.minimized .octopus-content {
+      display: none;
+    }
+
+    .octopus-trigger {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 999;
+    }
+
+    .octopus-trigger:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
   </style>
 </head>
 <body>
@@ -95,6 +208,129 @@
     <p>🌐 GitHub: <a href="https://github.com/yuzhangoscar" target="_blank">@yuzhangoscar</a></p>
     <p>© 2025 Yu Zhang</p>
   </footer>
+
+  <!-- Chatting Octopus Popup -->
+  <div class="octopus-popup" id="octopusPopup">
+    <div class="octopus-header" id="octopusHeader">
+      <div class="octopus-title">
+        🐙 Chatting Octopus
+      </div>
+      <div class="octopus-controls">
+        <button class="octopus-btn minimize-btn" id="minimizeBtn" title="Minimize">−</button>
+        <button class="octopus-btn maximize-btn" id="maximizeBtn" title="Maximize">□</button>
+        <button class="octopus-btn close-btn" id="closeBtn" title="Close">×</button>
+      </div>
+    </div>
+    <div class="octopus-content">
+      Coming soon... 🐙💬
+    </div>
+  </div>
+
+  <!-- Octopus Trigger Button -->
+  <button class="octopus-trigger" id="octopusTrigger" title="Open Chatting Octopus">
+    🐙
+  </button>
+
+  <script>
+    // Chatting Octopus Popup Functionality
+    const popup = document.getElementById('octopusPopup');
+    const trigger = document.getElementById('octopusTrigger');
+    const closeBtn = document.getElementById('closeBtn');
+    const minimizeBtn = document.getElementById('minimizeBtn');
+    const maximizeBtn = document.getElementById('maximizeBtn');
+    const header = document.getElementById('octopusHeader');
+
+    let isMaximized = false;
+    let isMinimized = false;
+    let isDragging = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+    let xOffset = 0;
+    let yOffset = 0;
+
+    // Show popup
+    trigger.addEventListener('click', () => {
+      popup.style.display = 'block';
+      trigger.style.display = 'none';
+    });
+
+    // Close popup
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+      trigger.style.display = 'block';
+      isMaximized = false;
+      isMinimized = false;
+      popup.classList.remove('minimized');
+      resetPopupSize();
+    });
+
+    // Minimize popup
+    minimizeBtn.addEventListener('click', () => {
+      isMinimized = !isMinimized;
+      popup.classList.toggle('minimized');
+    });
+
+    // Maximize popup
+    maximizeBtn.addEventListener('click', () => {
+      isMaximized = !isMaximized;
+      if (isMaximized) {
+        popup.style.width = '80vw';
+        popup.style.height = '80vh';
+        popup.style.top = '10vh';
+        popup.style.left = '10vw';
+        popup.style.transform = 'none';
+      } else {
+        resetPopupSize();
+      }
+    });
+
+    function resetPopupSize() {
+      popup.style.width = '400px';
+      popup.style.height = '300px';
+      popup.style.top = '50%';
+      popup.style.left = '50%';
+      popup.style.transform = 'translate(-50%, -50%)';
+    }
+
+    // Drag functionality
+    header.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', dragMove);
+    document.addEventListener('mouseup', dragEnd);
+
+    function dragStart(e) {
+      if (isMaximized) return;
+      
+      initialX = e.clientX - xOffset;
+      initialY = e.clientY - yOffset;
+
+      if (e.target === header || header.contains(e.target)) {
+        isDragging = true;
+      }
+    }
+
+    function dragMove(e) {
+      if (isDragging) {
+        e.preventDefault();
+        currentX = e.clientX - initialX;
+        currentY = e.clientY - initialY;
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        popup.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+      }
+    }
+
+    function dragEnd(e) {
+      initialX = currentX;
+      initialY = currentY;
+      isDragging = false;
+    }
+  </script>
 
 </body>
 </html>
