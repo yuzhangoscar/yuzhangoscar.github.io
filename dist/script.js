@@ -423,3 +423,66 @@ function dragEnd(e) {
   initialY = currentY;
   isDragging = false;
 }
+
+// Chat functionality
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSendBtn = document.getElementById('chatSendBtn');
+
+// Send message function
+function sendMessage() {
+  const message = chatInput.value.trim();
+  if (message === '') return;
+
+  // Add user message
+  addMessage('👤 You:', message, 'user-message');
+  
+  // Clear input
+  chatInput.value = '';
+  
+  // Add octopus response after a short delay
+  setTimeout(() => {
+    addMessage('🐙 Octopus:', 'This service is coming soon! 🚧', 'octopus-message');
+  }, 500);
+}
+
+// Add message to chat
+function addMessage(sender, text, messageClass) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `chat-message ${messageClass}`;
+  
+  const senderSpan = document.createElement('span');
+  senderSpan.className = 'message-sender';
+  senderSpan.textContent = sender;
+  
+  const textSpan = document.createElement('span');
+  textSpan.className = 'message-text';
+  textSpan.textContent = text;
+  
+  messageDiv.appendChild(senderSpan);
+  messageDiv.appendChild(textSpan);
+  
+  chatMessages.appendChild(messageDiv);
+  
+  // Scroll to bottom
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Event listeners for chat
+chatSendBtn.addEventListener('click', sendMessage);
+
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+});
+
+// Focus input when popup opens
+trigger.addEventListener('click', () => {
+  popup.style.display = 'block';
+  trigger.style.display = 'none';
+  // Focus input after a short delay to ensure popup is visible
+  setTimeout(() => {
+    if (chatInput) chatInput.focus();
+  }, 100);
+});
