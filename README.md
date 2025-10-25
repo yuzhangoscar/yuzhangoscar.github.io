@@ -1,6 +1,6 @@
 # Yu Zhang's Portfolio Website
 
-This repository hosts Yu Zhang's personal portfolio website, deployed via GitHub Pages at [yuzhangoscar.github.io](https://yuzhangoscar.github.io).
+This repository hosts Yu Zhang's personal portfolio website, deployed via GitHub Pages at [yuzhangoscar.github.io]([https://yuzhangoscar.github.io](https://yuzhangoscar.github.io/dist/index.html)).
 
 ## About
 
